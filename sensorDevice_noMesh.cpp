@@ -1,6 +1,8 @@
 // Autores: Grupo Moskitto GS - FIAP 1ESPA
 // Gabriel Kato, Gabriel Couto, João Vitor
+// Versão v1.0 - revisão 2025-06-01
 
+// Bibliotecas usadas no projeto (dependencias)
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include "DHTesp.h"
@@ -10,13 +12,14 @@ const char* ssid = "Wokwi-GUEST"; // Nome da rede Wi-Fi
 const char* password = ""; // Senha da rede Wi-Fi
 
 // Configurações do Broker MQTT
-const char* mqttServer = "20.55.19.44"; // IP do Broker MQTT (Orion Context Broker)
-const int mqttPort = 1883; // Porta do Broker MQTT
+const char* mqttServer = "20.55.19.44"; // IP do Broker MQTT
+const int mqttPort = 1883; // Porta do Broker MQTT (Orion Context Broker)
 const char* mqttUser = ""; // Usuário do MQTT (se necessário)
 const char* mqttPassword = ""; // Senha do MQTT (se necessário)
 const char* mqttClientID = "fiware_001"; // ID do cliente MQTT
 
-// Tópicos MQTT
+// Tópicos MQTT (configurado para dispositivo SensorDevice:001)
+// (para adicionar mais dispositivos fazer as requisições POST no Postman de acordo com o FIWARE)
 const char* topicTemperature = "/TEF/SensorDevice001/attrs/temperature";
 const char* topicHumidity = "/TEF/SensorDevice001/attrs/humidity";
 const char* topicWaterLevel = "/TEF/SensorDevice001/attrs/waterLevel";
@@ -32,7 +35,7 @@ WiFiClient espClient;
 PubSubClient client(espClient);
 
 void setup() {
- // Inicia o monitor serial
+ // Inicia o monitor serial (115200 baud)
  Serial.begin(115200);
  
  // Conecta no Wi-Fi
@@ -61,7 +64,7 @@ void loop() {
  float humidity = dht.getHumidity();
  float waterLevel = analogRead(WATERLVLSENSOR_PIN);
 
- // Envia os dados via MQTT
+ // Envia os dados via protocolo MQTT
  sendDataToFIWARE(temperature, humidity, waterLevel);
 
  // Aguarda 5 segundos antes de enviar novamente
@@ -78,7 +81,7 @@ void setupWiFi() {
  Serial.print(".");
  }
 
- // Exibe o IP atribuído
+ // Exibe o IP local atribuído
  Serial.println();
  Serial.println("Conectado à rede Wi-Fi");
  Serial.print("IP: ");
@@ -100,7 +103,7 @@ void reconnectMQTT() {
 }
 
 void mqttCallback(char* topic, byte* payload, unsigned int length) {
- // Função para implementação futura de receber mensagens/payloads remotos 
+ // Função para receber mensagens/payloads remotos 
  String message = "";
  for (unsigned int i = 0; i < length; i++) {
  message += (char)payload[i];
@@ -114,17 +117,18 @@ void sendDataToFIWARE(float temperature, float humidity, float waterLevel) {
  String temperatureMsg = String(temperature);
  String humidityMsg = String(humidity);
  
- // Formata o valor do nivel da agua
- int waterlevelPercent = map(waterLevel, 0, 4095, 0, 100); // Mapeia para percentual (0 a 100)
+ // Formata o valor do nível da água (converte leitura analógica para percentual)
+ int waterlevelPercent = map(waterLevel, 0, 4095, 0, 100);
  String waterlevelMsg = String(waterlevelPercent);
  
- // Envia os dados de temperatura, umidade e nivel da agua via MQTT
+ // Envia os dados de temperatura, umidade e nível da água via MQTT
  Serial.println("Enviando os dados para o FIWARE...");
  
  client.publish(topicTemperature, temperatureMsg.c_str());
  client.publish(topicHumidity, humidityMsg.c_str());
  client.publish(topicWaterLevel, waterlevelMsg.c_str());
  
+ // Imprime os dados enviados ao FIWARE no Serial
  Serial.print("Nivel da Agua: ");
  Serial.println(waterlevelMsg);
  Serial.print("Umidade: ");
