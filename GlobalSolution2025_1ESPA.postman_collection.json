@@ -1,0 +1,53 @@
+{
+	"info": {
+		"_postman_id": "4ef0442e-0b95-4ea9-83c5-fd200d33cf65",
+		"name": "GlobalSolution2025_1ESPA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42399138",
+		"_collection_link": "https://moskitto-boys.postman.co/workspace/moskitto-boys-Workspace~cf8d668d-8595-46e3-8225-abc6cbb8b7f0/collection/42399138-4ef0442e-0b95-4ea9-83c5-fd200d33cf65?action=share&source=collection_link&creator=42399138"
+	},
+	"item": [
+		{
+			"name": "TUDO QUE VOCE PRECISA SABER",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "fiware-service",
+						"value": "smart",
+						"type": "text"
+					},
+					{
+						"key": "fiware-servicepath",
+						"value": "/",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://{{url}}:1026/v2/entities/urn:ngsi-ld:SensorDevice:001?type=SensorDevice",
+					"protocol": "http",
+					"host": [
+						"{{url}}"
+					],
+					"port": "1026",
+					"path": [
+						"v2",
+						"entities",
+						"urn:ngsi-ld:SensorDevice:001"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "SensorDevice"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
