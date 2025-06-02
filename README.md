@@ -16,7 +16,7 @@ Nosso projeto para a Global Solution 2025.1 da FIAP consiste em solucionar [....
 - Sensor de Nível de Água (FD-10)
 
 ## Diagrama da Arquitetura do Projeto:
-![Diagrama](./diagrama_edge_v1.png "Diagrama do projeto")
+![Diagrama](./diagrama_edge_v2.png "Diagrama do projeto")
 
 ## Esquema de Montagem:
 ![esquema](./montagem_edge_v1.png "Esquema de montagem")
