@@ -8,7 +8,7 @@
 	},
 	"item": [
 		{
-			"name": "TUDO QUE VOCE PRECISA SABER",
+			"name": "GetSensorDevice",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -48,6 +48,13 @@
 				}
 			},
 			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "",
+			"type": "default"
 		}
 	]
 }
