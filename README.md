@@ -8,7 +8,7 @@
 - [**João Vitor**](https://github.com/joaomatosq) - RM559246
 
 ## Para que serve o nosso projeto? (Descrição do Projeto):
-Nosso projeto para a Global Solution 2025.1 da FIAP (Protech the Future) consiste em uma solução usando placas de desenvolvimento ultra-compactas ESP32-C3 Super Mini como ferramenta de medição de fatores ambientais de uma certa região (temperatura, umidade e nível da água). Essas medições servem para estatisticamente determinar previamente enchentes e prevenir ou até mesmo evitar que tais desastres tenham consequências maiores para a população/região.
+Nosso projeto para a Global Solution 2025.1 da FIAP (Protech the Future) consiste em uma solução usando placas de desenvolvimento ultra-compactas ESP32-C3 Super Mini como ferramenta de medição de fatores ambientais de uma certa região, sendo elas, temperatura, umidade e nível da água coletada da chuva (pluviômetro). Essas medições servem para estatisticamente determinar previamente enchentes e prevenir ou até mesmo evitar que tais desastres tenham consequências maiores para a população/região.
 
 ## Componentes Utilizados:
 - ESP32-C3 Super Mini
