@@ -1,4 +1,4 @@
-# FIAP - Global Solution 2025.1 - Edge Computing - Grupo Moskitto GS - 1ESPA
+# FIAP - Global Solution 2025.1 - IoT - Edge Computing - Grupo Moskitto GS - 1ESPA
 
 ### [Link da Simulação no Wokwi](https://wokwi.com/projects/432389305702575105)
 
@@ -8,12 +8,26 @@
 - [**João Vitor**](https://github.com/joaomatosq) - RM559246
 
 ## Para que serve o nosso projeto? (Descrição do Projeto):
-Nosso projeto para a Global Solution 2025.1 da FIAP (Protech the Future) consiste em uma solução usando placas de desenvolvimento ultra-compactas ESP32-C3 Super Mini como ferramenta de medição de fatores ambientais de uma certa região, sendo elas, temperatura, umidade e nível da água coletada da chuva (pluviômetro). Essas medições servem para estatisticamente determinar previamente enchentes e prevenir ou até mesmo evitar que tais desastres tenham consequências maiores para a população/região.
+Nosso projeto para a Global Solution 2025.1 da FIAP (Protech the Future) consiste em uma solução usando os sensores DHT22 e FD-10 conectados a placas de desenvolvimento ultra-compactas ESP32-C3 Super Mini como ferramenta de medição de fatores ambientais de uma certa região, sendo elas, temperatura, umidade e nível da água coletada da chuva (pluviômetro). Essas medições servem para estatisticamente determinar previamente enchentes e prevenir ou até mesmo evitar que tais desastres tenham consequências maiores para a população/região.
+
+Um dos principais destaques sobre o design do nosso projeto é que ele possibilita oferecer nossa solução por uma fração do valor que outras soluções do mercado.
 
 ## Componentes Utilizados:
 - ESP32-C3 Super Mini
 - Sensor de Temperatura e Umidade (DHT22)
 - Sensor de Nível de Água (FD-10)
+
+## Tecnologias Utilizadas:
+- FIWARE
+  - MQTT (IoT Agent e Broker)
+  - Orion Context Broker
+  - MongoDB
+  - STH-Comet
+- Microsoft Azure
+  - Máquina Virtual rodando o FIWARE (Debian/Linux)
+  - Interface de Rede (IP Público)
+- Linguagem de programação C++
+- Docker (Containers FIWARE)
 
 ## Qual a estrutura do nosso projeto? (Diagrama da Arquitetura do Projeto):
 ![Arquitetura](./diagrama_edge_v2.png "Arquitetura do projeto")
